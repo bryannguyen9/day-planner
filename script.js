@@ -78,19 +78,4 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-
-
-
-
-    
-  
-  window.addEventListener("load", function() {
-    for (i=9; i< 18; i++) {
-        var inputText = document.getElementById("#block-"+ i)
-        var savedBlock = JSON.parse(localStorage.getItem("#block-"+ i));
-        if (savedBlock) {
-            inputText.value = savedBlock;
-        }
-    }
-  });
   

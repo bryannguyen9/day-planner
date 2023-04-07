@@ -1,101 +1,149 @@
-# day-planner
+# Day Planner
+This is a planner for users to plan out their day with different events that occur.
 
-# 05 Third-Party APIs: Work Day Scheduler
+## Technology Used 
 
-## Your Task
+| Technology Used         | Resource URL           | 
+| ------------- |:-------------:| 
+| HTML    | [https://developer.mozilla.org/en-US/docs/Web/HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) | 
+| CSS     | [https://developer.mozilla.org/en-US/docs/Web/CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)      |   
+| Git | [https://git-scm.com/](https://git-scm.com/)     |  
+| JavaScript | [https://developer.mozilla.org/en-US/docs/Web/javascript](https://developer.mozilla.org/en-US/docs/Web/javascript) |
+| JQuery | [https://api.jquery.com/jQuery.browser/](https://api.jquery.com/jQuery.browser/) |
 
-Create a simple calendar application that allows a user to save events for each hour of the day by modifying starter code. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
+## Description
 
-You'll need to use the [Day.js](https://day.js.org/en/) library to work with date and time. Be sure to read the documentation carefully and concentrate on using Day.js in the browser.
+[Visit the Deployed Site](https://bryannguyen9.github.io/day-planner/)
 
-## User Story
+This project is a website that allows users plan out their day with different events in specific time-blocks.
 
-```md
-AS AN employee with a busy schedule
-I WANT to add important events to a daily planner
-SO THAT I can manage my time effectively
+It contains multiple different elements that allow users to lead a more productive and functional lifestyle with color-coded time periods based on past, present, and future, as well as the ability to save their events for a later date to refer back on.
+
+Again here is a link to my fully deployed website: 
+[Site Landing Page](https://bryannguyen9.github.io/day-planner/)
+
+## Table of Contents
+
+* [Homepage](#home-page)
+* [Code Example](#code-example)
+* [Usage](#usage)
+* [Learning Points](#learning-points)
+* [Author Info](#author-info)
+* [Credits](#credits)
+* [License](#license)
+
+## Home Page
+
+The following image shows the web application's appearance and functionality:
+
+![The homepage of my Day Planner](homepage.png)
+
+## Code Example
+
+Here is a code example of my javascript, specifically my currenTime() and pastPresentFuture() function where the currentTime() function uses the JQuery dayjs() function in order to tell the current date and time. This is used in conjunction for my pastPresentFuture function that allows users to see different color blocks based on their current time and which time blocks are in the past, present, or future.
+
+```javascript
+  function currentTime () {
+    var today = dayjs();
+    $('#currentDay').text(today.format('dddd, MMMM D, YYYY [at] hh:mm:ss a'));
+    }
+
+currentTime();
+setInterval(currentTime, 1000);
+
+function pastPresentFuture() {
+    var presentTime = parseInt(dayjs().format('H')); // use H instead of h for 24-hour format
+
+    for (var i = 9; i < 18; i++) {
+        var timeBlock = document.getElementById("hour-"+ i);
+        
+        if (i < presentTime) {
+            timeBlock.classList.add("past");
+          } else if (i === presentTime) {
+            timeBlock.classList.add("present");
+          } else {
+            timeBlock.classList.add("future");
+          }
+    }
+}
 ```
 
-## Acceptance Criteria
+## Usage
+ 
+Here you can see the home page of my day planner:
 
-```md
-GIVEN I am using a daily planner to create a schedule
-WHEN I open the planner
-THEN the current day is displayed at the top of the calendar
-WHEN I scroll down
-THEN I am presented with timeblocks for standard business hours
-WHEN I view the timeblocks for that day
-THEN each timeblock is color coded to indicate whether it is in the past, present, or future
-WHEN I click into a timeblock
-THEN I can enter an event
-WHEN I click the save button for that timeblock
-THEN the text for that event is saved in local storage
-WHEN I refresh the page
-THEN the saved events persist
-```
+![Speed Quiz Homepage Screenshot](./homepage.png)
 
-The following animation demonstrates the application functionality:
+Here you can see that when you are allowed to enter different events in different time blocks.
 
-<!-- @TODO: create ticket to review/update image) -->
-![A user clicks on slots on the color-coded calendar and edits the events.](./Assets/05-third-party-apis-homework-demo.gif)
+![Time Block Event Input Screenshot](./timeblock.png)
 
-## Grading Requirements
+Here you can see that when I clicked the save button for only one of the time-blocks. After refreshing the page the time-block input saves with whatever the user inputted into that event into local storage and displays on screen.
 
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
+![Local Storage Save Button Screenshot](./savebutton.png)
 
-This Challenge is graded based on the following criteria:
 
-### Technical Acceptance Criteria: 40%
+## Learning Points 
 
-* Satisfies all of the above acceptance criteria plus the following:
+This is one of my first projects where I implemented different JQuery elements into my project. A lot of different resources were referenced as to how to implement JQuery elements seamlessly into my project making the web app as a whole more functional and user friendly.
 
-  * Uses a date utility library to work with date and time
+I also had to figure out different DOM loading techniques as this is necessary for the user to have a proper save feature when refreshing the page and having the inputs be in local storage.
 
-### Deployment: 32%
+I enjoyed implementing these techniques into the project and using proper loop logic as that was another major part of this project. Overall I think this project allows users a seamless experience in order to increase productivity as a whole.
 
-* Application deployed at live URL
+These are some links that helped me:
 
-* Application loads with no errors
+1. [day-js-org](https://day.js.org/docs/en/query/is-a-dayjs)
+2. [Mozilla-Developer](https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event)
+3. [Mozilla-Developer](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
-* Application GitHub URL submitted
+## About Me
 
-* GitHub repo contains application code
+Hi, my name is Bryan Nguyen I am an up and coming full-stack web developer working
+on getting into the space with projects that support both my growth, belief, and imagination. I hope to one day work within the realm of AI, web-development, and even site-reliability/the space of cyber-security.
 
-### Application Quality: 15%
+## My links
 
-* Application user experience is intuitive and easy to navigate
+* [Portfolio](https://bryannguyen9.github.io/Bryan-Nguyen-Portfolio/)
+* [LinkedIn](https://linkedin.com/in/bryannguyen9)
+* [Github](https://github.com/bryannguyen9)
 
-* Application user interface style is clean and polished
 
-* Application resembles the mock-up functionality provided in the Challenge instructions
+## Credits
 
-### Repository Quality: 13%
+### Special thanks to David Chung: 
+ 
+ * His Github Portfolio: [David-Chung-Github](https://github.com/dchung13/)
+ * His Linked-In: [David-Chung-LinkedIn](https://www.linkedin.com/in/david-chung-77141526b/)
+ * His Portfolio Site: [David-Chung-Portfolio](https://dchung13.github.io/David-Chung-Portfolio/) 
 
-* Repository has a unique name
+### Special thanks to these reference websites that taught me different functionalities within my website for me to create a seamless experience for users.
 
-* Repository follows best practices for file structure and naming conventions
+1. [day-js-org](https://day.js.org/docs/en/query/is-a-dayjs)
+2. [Mozilla-Developer](https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event)
+3. [Mozilla-Developer](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
 
-* Repository contains multiple descriptive commit messages
+## License
 
-* Repository contains quality README file with description, screenshot, and link to deployed application
+MIT License
 
-## Review
+Copyright (c) [2023] [Bryan-Nguyen]
 
-You are required to submit the following for review:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-* The URL of the deployed application
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-* The URL of the GitHub repository, with a unique name and a README describing the project
-
-- - -
-© 2022 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
